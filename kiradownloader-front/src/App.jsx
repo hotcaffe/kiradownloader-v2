@@ -6,6 +6,8 @@ import GlobalStyle from './global'
 import { AiOutlineDownload } from 'react-icons/ai'
 import SideMenu from './components/default/SideMenu';
 import Container from './components/default/Container';
+import OptionButton from './components/downloader/OptionButton';
+import DownloaderTool from './components/downloader/DownloaderTool';
 
 function App() {
   return (
@@ -13,7 +15,7 @@ function App() {
       <div className="App">
         <GlobalStyle />
         <Container>
-          <div>Rola</div>
+          <DownloaderTool/>
           <LaunchButton>
             <AiOutlineDownload/>
           </LaunchButton>

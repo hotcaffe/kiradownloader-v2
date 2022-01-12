@@ -44,6 +44,7 @@ const ContainerWrapper = styled.div`
                 display: flex;
                 justify-content: center;
                 height: 210px;
+                width: 100%;
             }
             div.executeButton{
                 display: flex;
@@ -58,12 +59,13 @@ const ContainerWrapper = styled.div`
     }
 `
 
-const LaunchButtonWrapper = styled.div`
+const LaunchButtonWrapper = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
     width: 140px;
     height: 40px;
+    border: none;
     border-radius: 5px;
     background-color: ${props => props.theme.color.active_button};
     color: ${props => props.theme.color.text_color};
@@ -92,7 +94,7 @@ const SideMenuWrapper = styled.div`
         justify-content: center;
         width: 60px;
         height: 100px;
-        background-color: ${props => props.theme.color.deactive_button};
+        background-color: ${props => props.theme.color.deactivated_button};
         cursor: pointer;
 
         &.downloaderNavigator{
