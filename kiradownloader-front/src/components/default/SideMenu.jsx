@@ -1,16 +1,23 @@
-import react from 'react'
+import react, { useContext } from 'react'
+import GlobalContext from '../../contexts/GlobalContext'
 import {SideMenuWrapper} from './styledWrappers'
-import {GrGallery} from 'react-icons/gr'
-import {AiOutlineDownload} from 'react-icons/ai'
+// import {AiOutlineDownload} from 'react-icons/ai'
+import {AiFillPicture, AiOutlineDownload} from 'react-icons/ai'
 
-export default function(){
+export default function({tool}){
+    const {globals, setGlobals} = useContext(GlobalContext)
+
+    function changeTab(tab){
+        setGlobals({...globals, tab: tab})
+    }
+
     return(
         <SideMenuWrapper>
-            <div className="downloaderNavigator selected">
+            <div className={"downloaderNavigator" + (tool == "downloader" ? " selected" : "")} onClick={e => changeTab('downloader')}>
                 <AiOutlineDownload/>
             </div>
-            <div className="formaterNavigator">
-                <GrGallery/>
+            <div className={"formaterNavigator" + (tool == "formater" ? " selected" : "")} onClick={e => changeTab('formater')}>
+                <AiFillPicture/>
             </div>
         </SideMenuWrapper>
     )

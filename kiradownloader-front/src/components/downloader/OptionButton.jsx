@@ -1,5 +1,5 @@
 import react from 'react'
-import { OptionButtonWrapper } from './downloaderStyledWrappers'
+import { OptionButtonWrapper } from './downloaderWrappers'
 
 export default function({children, radioValue, group, status}){
     return(

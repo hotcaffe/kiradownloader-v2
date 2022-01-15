@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const ContainerWrapper = styled.div`
     font-family: 'Roboto', sans-serif;
@@ -8,6 +8,8 @@ const ContainerWrapper = styled.div`
     height: 600px;
     color: ${props => props.theme.color.text_color};
     background-color: ${props => props.theme.color.background};
+    user-select: none;
+    transition: background 0.2s;
     header{
         display: flex;
         align-items: center;
@@ -32,6 +34,27 @@ const ContainerWrapper = styled.div`
             justify-content: center;
             width: 90px;
             height: 100%;
+            &.theme-btn{
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                margin-top: 40px;
+                height: 100%;
+                svg{
+                    width: 26px;
+                    height: 26px;
+                    color: ${props => props.theme.color.text_disabled};
+                    transition: background 0.5s, color 0.5s, box-shadow 0.5s;
+                    border-radius: 5px;
+                    padding: 5px;
+                    &:hover{
+                        color: ${props => props.theme.color.text_extra};
+                        background-color: ${props => props.theme.color.deactivated_button};
+                        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
         main.content{
@@ -50,6 +73,9 @@ const ContainerWrapper = styled.div`
                 display: flex;
                 justify-content: center;
                 height: 50px;
+                svg{
+                    width: 24px;
+                }
             }
         }
 
@@ -79,6 +105,9 @@ const LaunchButtonWrapper = styled.button`
     svg{
         width: 30px;
         height: 30px;
+    }
+    path{
+        stroke: ${props => props.theme.color.text_color};
     }
 `
 

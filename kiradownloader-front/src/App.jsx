@@ -1,27 +1,21 @@
-// import './App.css';
-import LaunchButton from './components/default/LaunchButton';
 import { ThemeProvider } from 'styled-components'
+import GlobalContext, {global} from './contexts/GlobalContext';
 import { dark, light } from './themes'
-import GlobalStyle from './global'
-import { AiOutlineDownload } from 'react-icons/ai'
-import SideMenu from './components/default/SideMenu';
-import Container from './components/default/Container';
-import OptionButton from './components/downloader/OptionButton';
-import DownloaderTool from './components/downloader/DownloaderTool';
+import Downloader from './components/downloader/Downloader'
+import Formater from './components/formater/Formater';
+import { useState } from 'react';
 
 function App() {
+  const [globalContextState, setGlobalContextState] = useState(global)
+
   return (
-    <ThemeProvider theme={dark}>
-      <div className="App">
-        <GlobalStyle />
-        <Container>
-          <DownloaderTool/>
-          <LaunchButton>
-            <AiOutlineDownload/>
-          </LaunchButton>
-        </Container>
-      </div>
-    </ThemeProvider>
+    <GlobalContext.Provider value={{globals: globalContextState, setGlobals: setGlobalContextState}}>
+      <ThemeProvider theme={globalContextState.theme}>
+        <div className="App">
+          {globalContextState.tab == 'downloader' ? <Downloader/> : <Formater/>}
+        </div>
+      </ThemeProvider>
+    </GlobalContext.Provider>
   );
 }
 

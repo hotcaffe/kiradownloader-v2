@@ -26,9 +26,10 @@ const OptionButtonWrapper = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         width: 100px;
         height: 30px;
+        font-size: 15px;
         background-color: ${props => props.theme.color.unselected_button};
         color: ${props => props.theme.color.text_disabled};
         font-weight: bold;
@@ -36,6 +37,9 @@ const OptionButtonWrapper = styled.div`
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         transition: background 0.2s, color 0.2s;
         cursor: pointer;
+        svg{
+            font-size: 22px;
+        }
         &:hover{
             background-color: ${props => props.theme.color.option_button};
             color: ${props => props.theme.color.text_color};
