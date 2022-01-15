@@ -1,4 +1,3 @@
-import react from 'react'
 import { LoadingBarWrapper } from './styledWrappers'
 
 export default function({percentage}){

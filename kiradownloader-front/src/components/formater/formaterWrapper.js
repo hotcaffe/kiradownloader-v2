@@ -19,6 +19,18 @@ const FormaterToolWrapper = styled.div`
         background-color: ${props => props.theme.color.text_color};
         color: ${props => props.theme.color.text_disabled};
         font-size: 30px;
+        transition: background 0.3s, color 0.2s;
+        cursor: pointer;
+
+        &.disabled{
+            pointer-events: none;
+            color: ${props => props.theme.color.option_button};
+        }
+
+        &:hover{
+            background-color: rgba(255, 255, 255, 0.85);
+            color: ${props => props.theme.color.active_button};
+        }
     }
 
     div.active{
@@ -37,6 +49,31 @@ const FormaterToolWrapper = styled.div`
             background-color: ${props => props.theme.color.active_button} !important;
         }
     }
+
+    div.selected{
+        div.dropdown-btn{
+            p{
+                color: ${props=>props.theme.color.active_button};
+                font-weight: bold;
+            }
+        }
+        div.separator{
+            background-color: ${props => props.theme.color.active_button} !important;
+        }
+    }
+
+    div.disabled{
+        div.separator{
+            background-color: ${props => props.theme.color.text_disabled} !important;
+        }
+        div.dropdown-btn{
+            pointer-events: none;
+            p{
+                color: ${props => props.theme.color.text_disabled};
+            }
+        }
+    }
+
     div.dropdown{
         display: flex;
         flex-direction: column;
@@ -46,6 +83,8 @@ const FormaterToolWrapper = styled.div`
         background-color: ${props => props.theme.color.deactivated_button};
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         transition: height 0.5s;
+
+
 
         div.separator{
             width: 340px;
@@ -107,7 +146,7 @@ const FormaterToolWrapper = styled.div`
                 padding: 10px 0px;
                 font-size: 12px;
                 font-weight: bold;
-                border-top: 0.5px solid ${props => props.theme.color.text_disabled};
+                border-top: 1px solid rgba(0, 0, 0, 0.25);
                 color: ${props => props.theme.color.text_disabled};
                 transition: color 0.4s;
                 &:hover{

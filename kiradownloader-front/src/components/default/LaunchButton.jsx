@@ -1,10 +1,22 @@
-import react from 'react'
+import { useContext } from 'react'
+import GlobalContext from '../../contexts/GlobalContext'
 import {LaunchButtonWrapper} from './styledWrappers'
+import {AiOutlineCloseCircle} from 'react-icons/ai'
 
-export default function({children}){
+export default function({children, block}){
+    const {globals, setGlobals} = useContext(GlobalContext)
+
+    function blockNavigation(){
+        if(globals.block){
+            setGlobals({...globals, block: false})
+        }else{
+            setGlobals({...globals, block: true})
+        }
+    }
+
     return (
-        <LaunchButtonWrapper>
-            {children}
+        <LaunchButtonWrapper className={block ? "block" : ""} onClick={e => blockNavigation()}>
+            {block ? <AiOutlineCloseCircle/> : children}
         </LaunchButtonWrapper>
     )
 }

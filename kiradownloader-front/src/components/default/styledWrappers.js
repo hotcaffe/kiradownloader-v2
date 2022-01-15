@@ -10,15 +10,7 @@ const ContainerWrapper = styled.div`
     background-color: ${props => props.theme.color.background};
     user-select: none;
     transition: background 0.2s;
-    header{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 20px;
-        font-size: 12px;
-        background-color: ${props => props.theme.color.headers};
-        color: ${props => props.theme.color.text_extra}
-    }
+
     main{
         margin: 0;
         display: flex;
@@ -99,8 +91,11 @@ const LaunchButtonWrapper = styled.button`
     user-select: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
+    &.block{
+        background-color: ${props => props.theme.color.option_button} !important;
+    }
     &:hover{
-        background-color: ${props => props.theme.color.loading_background};
+        background-color: ${props => props.theme.color.loading_background} !important;
     }
     svg{
         width: 30px;
@@ -125,6 +120,7 @@ const SideMenuWrapper = styled.div`
         height: 100px;
         background-color: ${props => props.theme.color.deactivated_button};
         cursor: pointer;
+        pointer-events: ${props => props.disabled ? 'none' : ''};
 
         &.downloaderNavigator{
             border-radius: 0 20px 0 0;
@@ -177,4 +173,38 @@ const LoadingBarWrapper = styled.div`
     }
 `
 
-export {ContainerWrapper, LaunchButtonWrapper, SideMenuWrapper, LoadingBarWrapper}
+const HeaderWrapper = styled.header`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20px;
+    font-size: 12px;
+    background-color: ${props => props.theme.color.headers};
+    color: ${props => props.theme.color.text_disabled};
+    div{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 50px;
+        height: 20px;
+    }
+    svg{
+        font-size: 18px;
+        padding: 1px 3px;
+        cursor: pointer;
+        &.minimize-btn{
+            &:hover{
+                background-color: rgba(0, 0, 0, 0.25);
+                color: ${props => props.theme.color.text_extra};
+            }
+        }
+        &.close-btn{
+            &:hover{
+                background-color: ${props => props.theme.color.close_color};
+                color: ${props => props.theme.color.text_color};
+            }
+        }
+    }
+`
+
+export { ContainerWrapper, LaunchButtonWrapper, SideMenuWrapper, LoadingBarWrapper, HeaderWrapper }

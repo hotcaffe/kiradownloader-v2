@@ -3,7 +3,8 @@ import { dark, light } from '../themes'
 
 export const global = {
     theme: dark,
-    tab: 'downloader'  
+    tab: 'downloader',
+    block: false
 }
 
 const GlobalContext = createContext(global)

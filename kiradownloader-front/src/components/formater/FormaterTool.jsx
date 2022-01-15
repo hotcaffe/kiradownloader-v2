@@ -1,10 +1,14 @@
-import react, { useState } from 'react'
+import { useState } from 'react'
 import { FormaterToolWrapper } from './formaterWrapper'
 import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
 import {AiFillFileAdd} from 'react-icons/ai'
 
-export default function(){
+export default function({block}){
     const [showDropdown, setShowDropdown] = useState(false)
+    const [data, setData] = useState({
+        file: '',
+        format: false
+    })
 
     function dropdownHandler(){
         if(showDropdown){
@@ -14,24 +18,29 @@ export default function(){
         }
     }
 
+    function setFormat(format){
+        dropdownHandler()
+        setData({...data, format: format})
+    }
+
     return(
         <FormaterToolWrapper>
-            <div className="input-file">
+            <div className={"input-file" + (block ? ' disabled' : '')}>
                 <AiFillFileAdd/>
             </div>
-            <div className={"dropdown" + (showDropdown ? ' active' : '')}>
+            <div className={"dropdown" + (showDropdown ? ' active' : '') + (data.format ? ' selected' : '') + (block ? ' disabled' : '')}>
                 <div className="separator"/>
                 <div className="dropdown-btn" onClick={e => dropdownHandler()}>
                     <div/>
-                    <p>CONVERT TO</p>
+                    <p>{data.format ? data.format : "CONVERT TO"}</p>
                     {showDropdown ? <FiChevronUp/> : <FiChevronDown/>}
                 </div>
-                <div name="format" className="dropdown-input">
-                    <p value="MP3">AVI</p>
+                <div name="format" className="dropdown-input" onClick={e => setFormat(e.target.attributes.value.value)}>
+                    <p value="AVI">AVI</p>
                     <p value="MP3">MP3</p>
-                    <p value="MP3">MP4</p>
-                    <p value="MP3">WAV</p>
-                    <p value="MP3">WMV</p>
+                    <p value="MP4">MP4</p>
+                    <p value="WAV">WAV</p>
+                    <p value="WMV">WMV</p>
                 </div>
             </div>
         </FormaterToolWrapper>

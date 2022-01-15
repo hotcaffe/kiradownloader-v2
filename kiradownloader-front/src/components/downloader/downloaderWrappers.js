@@ -7,18 +7,20 @@ const OptionButtonWrapper = styled.div`
         width: 0;
     }
     input:checked + label{
-        background-color: ${props => props.theme.color.option_button};
-        color: ${props => props.theme.color.text_color};
+        background-color: ${props => props.theme.color.option_button} !important;
+        color: ${props => props.theme.color.text_color} !important;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) !important;
     }
     input:disabled + label{
-        background-color: ${props => props.theme.color.deactivated_button};
+        background-color: ${props => props.theme.color.disabled_button};
         color: ${props => props.theme.color.text_disabled};
+        box-shadow: none;
         input{
             display: none;
         }
         cursor: default;
         &:hover{
-            background-color: ${props => props.theme.color.deactivated_button};
+            background-color: ${props => props.theme.color.disabled_button};
             color: ${props => props.theme.color.text_disabled};
         }
     }
@@ -63,6 +65,11 @@ const DownloaderToolWrapper = styled.div`
         &:focus{
             border-bottom: 5px solid ${props => props.theme.color.active_button};
         }
+        &:disabled{
+            pointer-events: none;
+            background-color: ${props => props.theme.color.text_color};
+            border-bottom: 5px solid ${props => props.theme.color.active_button};
+        }
     }
     div.options{
         display: flex;
@@ -70,6 +77,7 @@ const DownloaderToolWrapper = styled.div`
         align-items: center;
         justify-content: center;
     }
+
     div.formatOptions, .qualityOptions{
         display: flex;
         flex-direction: row;

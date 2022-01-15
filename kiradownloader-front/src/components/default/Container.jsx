@@ -1,16 +1,16 @@
-import react, { useContext } from 'react'
+import { useContext } from 'react'
 import GlobalContext from '../../contexts/GlobalContext'
 import LoadingBar from './LoadingBar'
 import SideMenu from './SideMenu'
 import {dark, light} from '../../themes'
 import {ContainerWrapper} from './styledWrappers'
 import {FiMoon} from 'react-icons/fi'
+import Header from './Header'
 
 export default function({children, tool, loadingPercentage}){
     const {globals, setGlobals} = useContext(GlobalContext)
 
     function changeTheme(){
-        console.log(globals.theme)
         if(globals.theme.title == 'dark'){
             setGlobals({...globals, theme: light})
         }else{
@@ -20,10 +20,10 @@ export default function({children, tool, loadingPercentage}){
 
     return(
         <ContainerWrapper>
-            <header>@kiraDownloader v2</header>
+            <Header/>
             <main>
                 <aside>
-                    <SideMenu tool={tool}/>
+                    <SideMenu tool={tool} disabled={globals.block ? true : false}/>
                 </aside>
                 <main className="content">
                     <div className="tool">
