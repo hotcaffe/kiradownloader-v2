@@ -1,20 +1,40 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
+const path = require('path')
+const {startIPC} = require('./IPC_listeners/frame_main')
+const {downloaderIPC} = require('./IPC_listeners/download_main')
 
-function createWindows(){
+function createWindow(){
     const win = new BrowserWindow({
         width: 800,
         height: 600,
         minWidth: 800,
         minHeight: 600,
+        backgroundColor: '#888888',
+        title: 'kiraDownloader v2',
         titleBarStyle: 'hidden',
         resizable: false,
         frame: false,
+        transparent: true,
+        webPreferences: {
+            nodeIntegration: false,
+            contextIsolation: true,
+            enableRemoteModule: false,
+            preload: path.join(__dirname, 'preload.js')
+        }
         
     })
-    // win.loadFile('index.html')
+
     win.loadURL('http://localhost:3000')
+    win.webContents.openDevTools()
+    startIPC(win)
+    downloaderIPC(win)
+
 }
 
 app.whenReady().then(() => {
-    createWindows()
+    createWindow()
+})
+
+ipcMain.on('close-window', (event, data) =>{
+    app.quit()
 })

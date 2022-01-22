@@ -7,8 +7,14 @@ export default function(){
             <div/>
             <p>@kiraDownloader v2</p>
             <div>
-                <AiOutlineMinus className="minimize-btn"/>
-                <AiOutlineClose className="close-btn"/>
+                <AiOutlineMinus 
+                    className="minimize-btn"
+                    onClick={e => window.api.send.minimizeWindow('minimize application window')}
+                />
+                <AiOutlineClose 
+                    className="close-btn" 
+                    onClick={e => window.api.send.closeWindow('close application window')}
+                />
             </div>
         </HeaderWrapper>
     )

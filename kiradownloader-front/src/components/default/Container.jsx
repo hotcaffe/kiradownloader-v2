@@ -12,8 +12,10 @@ export default function({children, tool, loadingPercentage}){
 
     function changeTheme(){
         if(globals.theme.title == 'dark'){
+            localStorage.setItem('kiradownloader_theme', 'light')
             setGlobals({...globals, theme: light})
         }else{
+            localStorage.setItem('kiradownloader_theme', 'dark')
             setGlobals({...globals, theme: dark})
         }
     }
@@ -40,7 +42,7 @@ export default function({children, tool, loadingPercentage}){
                 </aside>
             </main>
             <footer>
-                <LoadingBar percentage={loadingPercentage}/>
+                <LoadingBar percentage={loadingPercentage || 0}/>
             </footer>
         </ContainerWrapper>
     )

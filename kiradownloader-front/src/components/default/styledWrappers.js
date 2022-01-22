@@ -157,6 +157,7 @@ const LoadingBarWrapper = styled.div`
     width: 100%;
     height: 30px;
     p{
+        height: 12px;
         margin: 4px;
         font-size: 10px;
         color: ${props => props.theme.color.text_extra}
@@ -178,15 +179,17 @@ const HeaderWrapper = styled.header`
     align-items: center;
     justify-content: space-between;
     height: 20px;
-    font-size: 12px;
+    font-size: 10px;
     background-color: ${props => props.theme.color.headers};
     color: ${props => props.theme.color.text_disabled};
+    -webkit-app-region: drag;
     div{
         display: flex;
         align-items: center;
         justify-content: space-around;
         width: 50px;
         height: 20px;
+        -webkit-app-region: no-drag;
     }
     svg{
         font-size: 18px;

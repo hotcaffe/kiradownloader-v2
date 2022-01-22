@@ -11,5 +11,9 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^16.0.6"
+  },
+  "dependencies": {
+    "ffmpeg-static": "^4.4.1",
+    "ytdl-core": "^4.10.0"
   }
 }
