@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, memo } from 'react'
 import GlobalContext from '../../contexts/GlobalContext'
 import LoadingBar from './LoadingBar'
 import SideMenu from './SideMenu'
@@ -7,7 +7,7 @@ import {ContainerWrapper} from './styledWrappers'
 import {FiMoon} from 'react-icons/fi'
 import Header from './Header'
 
-export default function({children, tool, loadingPercentage}){
+function ContainerComponent({children, tool, loadingPercentage}){
     const {globals, setGlobals} = useContext(GlobalContext)
 
     function changeTheme(){
@@ -47,3 +47,5 @@ export default function({children, tool, loadingPercentage}){
         </ContainerWrapper>
     )
 }
+
+export const Container = memo(ContainerComponent)

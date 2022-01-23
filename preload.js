@@ -12,6 +12,12 @@ contextBridge.exposeInMainWorld('api', {
     download: {
         downloadContent(data){
             ipcRenderer.send('download-content', data)
+        },
+        downloadVideo(data){
+            ipcRenderer.send('download-video', data)
+        },
+        downloadAudio(data){
+            ipcRenderer.send('download-audio', data)
         }
     },
     on: {

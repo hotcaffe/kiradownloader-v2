@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import GlobalContext from '../../contexts/GlobalContext'
 import {SideMenuWrapper} from './styledWrappers'
-// import {AiOutlineDownload} from 'react-icons/ai'
 import {AiFillPicture, AiOutlineDownload} from 'react-icons/ai'
 
 export default function({tool, disabled}){
