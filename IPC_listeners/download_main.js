@@ -14,7 +14,7 @@ function downloadProgress(event, actualLength, totalLength){
 module.exports = {
     downloaderIPC(win){
         ipcMain.on('download-content', async (event, data) => {
-            const [videoITAG, audioITAG, videoLength, audioLength] = await info(data.url, data.options.quality)
+            const [videoITAG, audioITAG, videoLength, audioLength] = await info(data.url, data.quality)
             
             const totalLength = videoLength + audioLength
             const userPath = data.path
@@ -38,7 +38,7 @@ module.exports = {
             })
         })
         ipcMain.on('download-video', async (event, data) => {
-            const [videoITAG, audioITAG, videoLength, audioLength] = await info(data.url, data.options.quality)
+            const [videoITAG, audioITAG, videoLength, audioLength] = await info(data.url, data.quality)
             const userPath = data.path
             let actualLength = 0
             
@@ -52,7 +52,7 @@ module.exports = {
             })
         })
         ipcMain.on('download-audio', async (event, data) => {
-            const [videoITAG, audioITAG, videoLength, audioLength] = await info(data.url, data.options.quality)
+            const [videoITAG, audioITAG, videoLength, audioLength] = await info(data.url, data.quality)
             const userPath = data.path
             let actualLength = 0
             

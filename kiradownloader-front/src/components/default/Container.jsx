@@ -7,7 +7,7 @@ import {ContainerWrapper} from './styledWrappers'
 import {FiMoon} from 'react-icons/fi'
 import Header from './Header'
 
-function ContainerComponent({children, tool, loadingPercentage}){
+export default function({children, tool, loadingPercentage}){
     const {globals, setGlobals} = useContext(GlobalContext)
 
     function changeTheme(){
@@ -47,5 +47,3 @@ function ContainerComponent({children, tool, loadingPercentage}){
         </ContainerWrapper>
     )
 }
-
-export const Container = memo(ContainerComponent)
