@@ -8,32 +8,57 @@ const audio = path.join(__dirname, 'output', 'audio.mp3')
 const output = path.join(__dirname, 'output', 'output.mp4')
 const ffmpeg = path.join(__dirname, '../', 'node_modules', 'ffmpeg-static')
 
+let prtest = 0
+
 module.exports = {
     async dlVideo(url, itag, progressCb, callback){
-        ytdl(url, {
-            quality: itag 
-        }).on('data', (data) => {
+        const readable = ytdl(url, {
+            quality: itag
+        })
+        readable.on('data', (data) => {
             if(progressCb){
-                progressCb(data.length)
+                progressCb(data.length, readable)
             }
         })
-        .pipe(fs.createWriteStream(video)).on('finish', () => {
+        const writable = readable.pipe(fs.createWriteStream(video)).on('drain', () => {
+            if(readable.destroyed){
+                writable.destroy()
+                readable.end()
+                writable.end()
+            }
+        }).on('finish', () => {
             if(callback){
-                callback()
+                if(writable.destroyed){
+                    callback('aborted')
+                }else{
+                    callback()
+                }
             }
         })
     },
     async dlAudio(url, itag, progressCb, callback){
-        ytdl(url, {
+        const readable = ytdl(url, {
             quality: itag
-        }).on('data', (data) => {
+        })
+        readable.on('data', (data) => {
             if(progressCb){
-                progressCb(data.length)
+                progressCb(data.length, readable)
             }
         })
-        .pipe(fs.createWriteStream(audio)).on('finish', () => {
+        const writable = readable.pipe(fs.createWriteStream(audio)).on('drain', () => {
+            if(readable.destroyed){
+                writable.destroy()
+                readable.end()
+                writable.end()
+            }
+        }).on('finish', () => {
+            console.log(writable.destroyed)
             if(callback){
-                callback()
+                if(writable.destroyed){
+                    callback('aborted')
+                }else{
+                    callback()
+                }
             }
         })
     },

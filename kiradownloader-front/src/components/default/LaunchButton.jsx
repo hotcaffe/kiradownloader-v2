@@ -3,7 +3,7 @@ import GlobalContext from '../../contexts/GlobalContext'
 import {LaunchButtonWrapper} from './styledWrappers'
 import {AiOutlineCloseCircle} from 'react-icons/ai'
 
-export default function({children, download, block}){
+export default function({children, toolHandler, block}){
     const {globals, setGlobals} = useContext(GlobalContext)
 
     function blockNavigation(){
@@ -16,7 +16,7 @@ export default function({children, download, block}){
 
     return (
         <LaunchButtonWrapper className={block ? "block" : ""} onClick={e => {
-            download()
+            toolHandler()
             blockNavigation()
         }}>
             {block ? <AiOutlineCloseCircle/> : children}

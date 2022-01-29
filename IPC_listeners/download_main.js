@@ -4,27 +4,48 @@ const {dlAudio, dlVideo, mergeStreams, info, removeTempFiles} = require('../src/
 
 function downloadProgress(event, actualLength, totalLength){
     const progress = parseInt((actualLength / totalLength) * 100)
-    if(progress > 100){
+    if(progress > 100 || !progress){
         event.reply('download-progress', 'Getting audio track!') //used when the youtube didn't return the audio stream length.
     }else{
         event.reply('download-progress', progress)
     }
 }
 
+async function chunckManager(event, data, stream, chunck, length, totalLength){
+    if(abortStream){
+        stream.destroy()
+        abortStream = false
+        return 0
+    }
+    length = length + chunck
+    downloadProgress(event, length, totalLength)
+}
+
 module.exports = {
     downloaderIPC(win){
+        let abortStream = false
+
         ipcMain.on('download-content', async (event, data) => {
             const [videoITAG, audioITAG, videoLength, audioLength] = await info(data.url, data.quality)
-            
             const totalLength = videoLength + audioLength
             const userPath = data.path
             let actualLength = 0
         
-            dlVideo(data.url, videoITAG, (size) => {
+            dlVideo(data.url, videoITAG, (size, stream) => {
+                if(abortStream){
+                    stream.destroy()
+                    abortStream = false
+                    return 0
+                }
                 actualLength = actualLength + size
                 downloadProgress(event, actualLength, totalLength)
             }, () => {
-                dlAudio(data.url, audioITAG, (size) => {
+                dlAudio(data.url, audioITAG, (size, stream) => {
+                    if(abortStream){
+                        stream.destroy()
+                        abortStream = false
+                        return 0
+                    }
                     actualLength = actualLength + size
                     downloadProgress(event, actualLength, totalLength)
                 }, () => {
@@ -42,13 +63,22 @@ module.exports = {
             const userPath = data.path
             let actualLength = 0
             
-            dlVideo(data.url, videoITAG, (size) => {
+            dlVideo(data.url, videoITAG, (size, stream) => {
+                if(abortStream){
+                    stream.destroy()
+                    abortStream = false
+                    return 0
+                }
                 actualLength = actualLength + size
                 downloadProgress(event, actualLength, videoLength)
-            }, () => {
-                event.reply('download-progress', 'Removing temporary files!')
-                removeTempFiles('video', userPath)
-                event.reply('download-progress', 'Done!')
+            }, (aborted) => {
+                if(aborted){
+                    event.reply('download-progress', 'Aborted')
+                }else{
+                    event.reply('download-progress', 'Removing temporary files!')
+                    removeTempFiles('video', userPath)
+                    event.reply('download-progress', 'Done!')
+                }
             })
         })
         ipcMain.on('download-audio', async (event, data) => {
@@ -56,14 +86,27 @@ module.exports = {
             const userPath = data.path
             let actualLength = 0
             
-            dlAudio(data.url, audioITAG, (size) => {
+            dlAudio(data.url, audioITAG, (size, stream) => {
+                if(abortStream){
+                    stream.destroy()
+                    abortStream = false
+                    return 0
+                }
                 actualLength = actualLength + size
                 downloadProgress(event, actualLength, audioLength)
-            }, () => {
-                event.reply('download-progress', 'Removing temporary files!')
-                removeTempFiles('audio', userPath)
-                event.reply('download-progress', 'Done!')
+            }, (aborted) => {
+                if(aborted){
+                    event.reply('download-progress', 'Aborted')
+                }else{
+                    event.reply('download-progress', 'Removing temporary files!')
+                    removeTempFiles('audio', userPath)
+                    event.reply('download-progress', 'Done!')
+                }
             })
+        })
+        ipcMain.on('download-cancel', async (event, data) => {
+            abortStream = true
+            event.reply('download-progress', 'Aborted')
         })
     }
 }

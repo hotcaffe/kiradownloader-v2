@@ -24,7 +24,7 @@ export default function () {
 
   function manageDownload() {
     if(globals.block){
-      return 0
+      window.api.download.downloadCancel('abort')
     }else{
       if (downloadData.media === 'video') {
         window.api.download.downloadVideo(downloadData)
@@ -35,6 +35,10 @@ export default function () {
       }
   
       window.api.on.waitProgress('download-progress', (event, progress) => {
+        if(progress == 'Aborted'){
+          setLoading('Download Aborted!')
+          return 0
+        }
         if (oldProgressValue != progress) {
           oldProgressValue = progress
           setLoading(progress)
@@ -51,7 +55,7 @@ export default function () {
     <DownloadContext.Provider value={{ downloadData: downloadData, setDownloadData: setDownloadData }}>
       <Container tool="downloader" loadingPercentage={loading} block={globals.block}>
         <DownloaderTool block={globals.block} />
-        <LaunchButton block={globals.block} download={manageDownload}>
+        <LaunchButton block={globals.block} toolHandler={manageDownload}>
           <AiOutlineDownload />
         </LaunchButton>
       </Container>

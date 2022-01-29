@@ -39,4 +39,5 @@ app.whenReady().then(() => {
 
 ipcMain.on('close-window', (event, data) =>{
     app.quit()
+    app.exit()
 })

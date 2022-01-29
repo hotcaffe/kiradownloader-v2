@@ -18,6 +18,9 @@ contextBridge.exposeInMainWorld('api', {
         },
         downloadAudio(data){
             ipcRenderer.send('download-audio', data)
+        },
+        downloadCancel(data){
+            ipcRenderer.send('download-cancel', data)
         }
     },
     on: {
