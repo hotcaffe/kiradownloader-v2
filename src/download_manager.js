@@ -59,9 +59,14 @@ module.exports = {
             }
         })
     },
-    async mergeStreams(callback) {
+    async mergeStreams(aborted, callback) {
+        const abortController = new AbortController()
+        if(aborted){
+            abortController.abort()
+        }
         cp.exec(`ffmpeg -i "${video}" -i "${audio}" -c copy "${output}" -y`, {
-            cwd: ffmpeg
+            cwd: ffmpeg,
+            signal: abortController.signal
         }, (err) => {
             if (callback) {
                 callback()

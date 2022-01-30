@@ -1,6 +1,6 @@
 const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
-const {startIPC} = require('./IPC_listeners/frame_main')
+const {windowIPC} = require('./IPC_listeners/frame_main')
 const {downloaderIPC} = require('./IPC_listeners/download_main')
 
 function createWindow(){
@@ -26,7 +26,7 @@ function createWindow(){
 
     win.loadURL('http://localhost:3000')
     win.webContents.openDevTools()
-    startIPC(win)
+    windowIPC(win)
     downloaderIPC(win)
 
 }
@@ -35,8 +35,4 @@ app.disableHardwareAcceleration()
 
 app.whenReady().then(() => {
     createWindow()
-})
-
-ipcMain.on('close-window', (event, data) =>{
-    app.exit()
 })

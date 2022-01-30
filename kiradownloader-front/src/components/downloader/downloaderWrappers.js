@@ -9,7 +9,7 @@ const OptionButtonWrapper = styled.div`
     input:checked + label{
         background-color: ${props => props.theme.color.option_button} !important;
         color: ${props => props.theme.color.text_color} !important;
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25) !important;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25) !important;
     }
     input:disabled + label{
         background-color: ${props => props.theme.color.disabled_button};
@@ -36,7 +36,7 @@ const OptionButtonWrapper = styled.div`
         color: ${props => props.theme.color.text_disabled};
         font-weight: bold;
         user-select: none;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
         transition: background 0.2s, color 0.2s;
         cursor: pointer;
         svg{
@@ -60,7 +60,7 @@ const DownloaderToolWrapper = styled.div`
         border: none;
         border-bottom: 5px solid #FFF;
         outline: none;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
         transition: height 0.2s, border 0.2s;
         &:focus{
             border-bottom: 5px solid ${props => props.theme.color.active_button};

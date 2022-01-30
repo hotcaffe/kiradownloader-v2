@@ -1,6 +1,5 @@
 import { ThemeProvider } from 'styled-components'
 import GlobalContext, {global} from './contexts/GlobalContext';
-import { dark, light } from './themes'
 import Downloader from './components/downloader/Downloader'
 import Formater from './components/formater/Formater';
 import { useState } from 'react';

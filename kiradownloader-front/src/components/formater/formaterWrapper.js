@@ -81,7 +81,7 @@ const FormaterToolWrapper = styled.div`
         width: 340px;
         height: 30px;
         background-color: ${props => props.theme.color.deactivated_button};
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
         transition: height 0.5s;
 
 

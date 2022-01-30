@@ -51,10 +51,16 @@ module.exports = {
                             removeTempFiles('all')
                         } else {
                             event.reply('download-progress', 'Merging Files!')
-                            mergeStreams(() => {
-                                event.reply('download-progress', 'Removing temporary files!')
-                                removeTempFiles('both', userPath)
-                                event.reply('download-progress', 'Done!')
+                            mergeStreams(abortStream, () => {
+                                if(abortStream){
+                                    event.reply('download-progress', 'Aborted')
+                                    abortStream = false
+                                    removeTempFiles('all')
+                                }else{
+                                    event.reply('download-progress', 'Removing temporary files!')
+                                    removeTempFiles('both', userPath)
+                                    event.reply('download-progress', 'Done!')
+                                }
                             })
                         }
                     })

@@ -1,9 +1,8 @@
 import { FiVolume1, FiYoutube } from 'react-icons/fi'
-import { AiOutlineCloseCircle, AiOutlineDownload } from 'react-icons/ai'
 import { DownloaderToolWrapper } from './downloaderWrappers'
 import DownloadContext from '../../contexts/DownloadContext'
 import OptionButton from './OptionButton'
-import { useContext, useEffect, useState } from 'react'
+import { useContext} from 'react'
 
 
 export default function ({ block }) {

@@ -26,25 +26,38 @@ const ContainerWrapper = styled.div`
             justify-content: center;
             width: 90px;
             height: 100%;
-            &.theme-btn{
+            &.right-side{
                 display: flex;
-                align-items: center;
-                justify-content: start;
-                margin-top: 40px;
+                align-items: flex-end;
                 height: 100%;
-                svg{
-                    width: 26px;
-                    height: 26px;
-                    color: ${props => props.theme.color.text_disabled};
-                    transition: background 0.5s, color 0.5s, box-shadow 0.5s;
-                    border-radius: 5px;
-                    padding: 5px;
-                    &:hover{
-                        color: ${props => props.theme.color.text_extra};
-                        background-color: ${props => props.theme.color.deactivated_button};
-                        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-                        cursor: pointer;
+                div{
+                    height: 25%;
+                }
+                div.theme-button{
+                    width: 60px;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    svg{
+                        margin-top: 20px;
+                        width: 26px;
+                        height: 26px;
+                        color: ${props => props.theme.color.text_disabled};
+                        transition: background 0.5s, color 0.5s, box-shadow 0.5s;
+                        border-radius: 5px;
+                        padding: 5px;
+                        &:hover{
+                            color: ${props => props.theme.color.text_extra};
+                            background-color: ${props => props.theme.color.deactivated_button};
+                            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+                            cursor: pointer;
+                        }
                     }
+                }
+                div.search-path{
+                    display: flex;
+                    align-items: center;
+                    height: 50%;
                 }
             }
         }
@@ -89,7 +102,7 @@ const LaunchButtonWrapper = styled.button`
     color: ${props => props.theme.color.text_color};
     transition: background-color 0.2s;
     user-select: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     &.block{
         background-color: ${props => props.theme.color.option_button} !important;
@@ -110,7 +123,7 @@ const SideMenuWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 60px;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
     border-radius: 0 20px 20px 0;
     div{
         display: flex;
@@ -210,4 +223,29 @@ const HeaderWrapper = styled.header`
     }
 `
 
-export { ContainerWrapper, LaunchButtonWrapper, SideMenuWrapper, LoadingBarWrapper, HeaderWrapper }
+const SearchPathWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px !important;
+    width: 60px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 20px 0 0 20px;
+    background-color: ${props => props.theme.color.deactivated_button};
+    transition: background 0.2s, width 0.5s;
+    cursor: pointer;
+    svg{
+        width: 25px;
+        height: 25px;
+        color: ${props => props.theme.color.text_disabled};
+    }
+    &:hover{
+        svg{
+            color: ${props => props.theme.color.text_color};
+        }
+        background-color: ${props => props.theme.color.active_button};
+        width: 90px !important;
+    }
+`
+
+export { ContainerWrapper, LaunchButtonWrapper, SideMenuWrapper, LoadingBarWrapper, HeaderWrapper, SearchPathWrapper}
