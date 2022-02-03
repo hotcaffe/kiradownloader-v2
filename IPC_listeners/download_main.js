@@ -5,7 +5,7 @@ const { dlAudio, dlVideo, mergeStreams, info, removeTempFiles } = require('../sr
 function downloadProgress(event, actualLength, totalLength) {
     const progress = parseInt((actualLength / totalLength) * 100)
     if (progress > 100 || !progress) {
-        event.reply('download-progress', 'Getting audio track!') //used when the youtube didn't return the audio stream length.
+        event.reply('download-progress', 'Getting audio track!') //used when youtube didn't return the audio stream length.
     } else {
         event.reply('download-progress', progress)
     }

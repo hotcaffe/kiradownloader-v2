@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../../contexts/GlobalContext'
 import Container from '../default/Container'
 import DownloaderTool from './DownloaderTool'
@@ -12,7 +12,7 @@ export default function () {
 
   const [loading, setLoading] = useState('')
 
-  let oldProgressValue = 0
+  let oldProgressValue = 0 
 
   function getLocalStorage() {
     const local = JSON.parse(localStorage.getItem('kiradownloader_downloader_presets'))

@@ -7,6 +7,9 @@ contextBridge.exposeInMainWorld('api', {
         },
         minimizeWindow(message){
             ipcRenderer.send('minimize-window', message)
+        },
+        openDirectory(message){
+            ipcRenderer.send('open-directory-search', message)
         }
     },
     download: {
@@ -26,6 +29,9 @@ contextBridge.exposeInMainWorld('api', {
     on: {
         waitProgress(event, callback){
             ipcRenderer.on('download-progress', callback)
+        },
+        waitSearchPath(event, callback){
+            ipcRenderer.on('folder-path', callback)
         }
     }
 })

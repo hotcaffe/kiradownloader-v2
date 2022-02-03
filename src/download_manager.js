@@ -86,16 +86,18 @@ module.exports = {
         return [video.itag, audio.itag, videoLength, audioLength]
     },
     async removeTempFiles(type, userPath) {
+        const timestamp = Date.now()
+        
         if (type == 'audio') {
-            fs.copyFileSync(audio, path.join(userPath, 'audio.mp3'))
+            fs.copyFileSync(audio, path.join(userPath, `audio-${timestamp}.mp3`))
             fs.unlinkSync(audio)
         } else if (type == 'video') {
-            fs.copyFileSync(video, path.join(userPath, 'video.mp4'))
+            fs.copyFileSync(video, path.join(userPath, `video-${timestamp}.mp4`))
             fs.unlinkSync(video)
         } else if (type == 'both') {
             fs.unlinkSync(audio)
             fs.unlinkSync(video)
-            fs.copyFileSync(output, path.join(userPath, 'output.mp4'))
+            fs.copyFileSync(output, path.join(userPath, `output-${timestamp}.mp4`))
             fs.unlinkSync(output)
         } else {
             if (fs.existsSync(audio)) fs.unlinkSync(audio)
