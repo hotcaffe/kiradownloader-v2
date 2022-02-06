@@ -15,16 +15,30 @@ const FormaterToolWrapper = styled.div`
         justify-content: center;
         width: 340px;
         height: 50px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
         border-radius: 5px 5px 0px 0px;
         background-color: ${props => props.theme.color.text_color};
         color: ${props => props.theme.color.text_disabled};
-        font-size: 30px;
+        font-size: 14 px;
         transition: background 0.3s, color 0.2s;
         cursor: pointer;
+
+        span{
+            width: 320px;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+        }
+
+        svg{
+            font-size: 30px;
+        }
 
         &.disabled{
             pointer-events: none;
             color: ${props => props.theme.color.option_button};
+            font-weight: bold;
         }
 
         &:hover{
@@ -33,9 +47,14 @@ const FormaterToolWrapper = styled.div`
         }
     }
 
+    div.dropdown-btn{
+        text-transform: uppercase;
+    }
+
     div.active{
         height: 135px !important;
         div.dropdown-input{
+            text-transform: uppercase;
             display: flex !important;
         }
         div.dropdown-btn{

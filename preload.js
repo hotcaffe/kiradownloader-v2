@@ -10,6 +10,9 @@ contextBridge.exposeInMainWorld('api', {
         },
         openDirectory(message){
             ipcRenderer.send('open-directory-search', message)
+        },
+        openFile(message){
+            ipcRenderer.send('open-file-search', message)
         }
     },
     download: {
@@ -32,6 +35,9 @@ contextBridge.exposeInMainWorld('api', {
         },
         waitSearchPath(event, callback){
             ipcRenderer.on('folder-path', callback)
+        },
+        waitFilePath(event, callback){
+            ipcRenderer.on('file-path', callback)
         }
     }
 })

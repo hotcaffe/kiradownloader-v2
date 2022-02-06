@@ -16,9 +16,7 @@ export default function () {
 
   function getLocalStorage() {
     const local = JSON.parse(localStorage.getItem('kiradownloader_downloader_presets'))
-    if (!local) {
-      return downloadDataContext
-    }
+    if (!local) return downloadDataContext
     return local
   }
 

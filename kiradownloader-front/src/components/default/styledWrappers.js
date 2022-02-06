@@ -232,6 +232,7 @@ const SearchPathWrapper = styled.div`
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
     border-radius: 20px 0 0 20px;
     background-color: ${props => props.theme.color.deactivated_button};
+    pointer-events: ${props => props.disabled ? 'none' : ''};
     transition: background 0.2s, width 0.5s;
     cursor: pointer;
     svg{

@@ -3,14 +3,14 @@ import {SearchPathWrapper} from './styledWrappers'
 
 
 
-export default function SearchPath(){
+export default function SearchPath({disabled}){
     
     function openDirectorySearch(){
         window.api.send.openDirectory()
     }
 
     return(
-        <SearchPathWrapper onClick={e => openDirectorySearch()}>
+        <SearchPathWrapper onClick={e => openDirectorySearch()} disabled={disabled}>
             <AiFillFolderAdd/>
         </SearchPathWrapper>
     )

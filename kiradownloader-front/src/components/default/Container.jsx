@@ -41,7 +41,7 @@ export default function ({ children, tool, loadingPercentage }) {
                         <FiMoon onClick={e => changeTheme()} />
                     </div>
                     <div className="search-path">
-                        <SearchPath/>
+                        <SearchPath disabled={globals.block ? true : false}/>
                     </div>
                     <div/>
                 </aside>
