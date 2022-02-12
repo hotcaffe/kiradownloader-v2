@@ -29,9 +29,20 @@ contextBridge.exposeInMainWorld('api', {
             ipcRenderer.send('download-cancel', data)
         }
     },
+    format: {
+        formatMedia(data){
+            ipcRenderer.send('format-content', data)
+        },
+        formatCancel(data){
+            ipcRenderer.send('format-cancel', data)
+        }
+    },
     on: {
-        waitProgress(event, callback){
+        waitDownloadProgress(event, callback){
             ipcRenderer.on('download-progress', callback)
+        },
+        waitFormatProgress(event, callback){
+            ipcRenderer.on('format-progress', callback)
         },
         waitSearchPath(event, callback){
             ipcRenderer.on('folder-path', callback)

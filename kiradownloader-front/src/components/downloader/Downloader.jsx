@@ -12,7 +12,7 @@ export default function () {
 
   const [loading, setLoading] = useState('')
 
-  let oldProgressValue = 0 
+  let oldProgressValue = 0
 
   function getLocalStorage() {
     const local = JSON.parse(localStorage.getItem('kiradownloader_downloader_presets'))
@@ -21,9 +21,9 @@ export default function () {
   }
 
   function manageDownload() {
-    if(globals.block){
+    if (globals.block) {
       window.api.download.downloadCancel('abort')
-    }else{
+    } else {
       if (downloadData.media === 'video') {
         window.api.download.downloadVideo(downloadData)
       } else if (downloadData.media === 'audio') {
@@ -31,17 +31,17 @@ export default function () {
       } else {
         window.api.download.downloadContent(downloadData)
       }
-  
-      window.api.on.waitProgress('download-progress', (event, progress) => {
-        if(progress == 'Aborted'){
+
+      window.api.on.waitDownloadProgress('download-progress', (event, progress) => {
+        if (progress == 'Aborted') {
           setLoading('Download Aborted!')
           return 0
         }
         if (oldProgressValue != progress) {
           oldProgressValue = progress
           setLoading(progress)
-          if(progress == 'Done!'){
-            setGlobals({...globals, block: false})
+          if (progress == 'Done!') {
+            setGlobals({ ...globals, block: false })
           }
         }
       })

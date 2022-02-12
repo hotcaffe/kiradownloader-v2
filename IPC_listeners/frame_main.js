@@ -41,7 +41,7 @@ function windowIPC(win){
         }).then(file => {
             if(!file.canceled){
                 event.reply('file-path', {
-                    fileName: path.basename(file.filePaths[0]),
+                    fileName: path.parse(file.filePaths[0]).name,
                     fileExtension: path.extname(file.filePaths[0]),
                     filePath: file.filePaths[0]
                 })

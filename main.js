@@ -2,6 +2,7 @@ const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const {windowIPC} = require('./IPC_listeners/frame_main')
 const {downloaderIPC} = require('./IPC_listeners/download_main')
+const {formaterIPC} = require('./IPC_listeners/formater_main')
 
 function createWindow(){
     const win = new BrowserWindow({
@@ -28,6 +29,7 @@ function createWindow(){
     win.webContents.openDevTools()
     windowIPC(win)
     downloaderIPC(win)
+    formaterIPC(win)
 
 }
 
