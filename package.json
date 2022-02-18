@@ -1,17 +1,25 @@
 {
-  "name": "mydownloader-v2",
+  "name": "kiradownloader-v2",
+  "homepage": "./",
   "version": "1.0.0",
-  "description": "",
+  "description": "App for downloading and formating content",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "dev": "nodemon --watch . --exec npm start"
+    "dev": "nodemon --watch . --exec npm start",
+    "build": "electron-builder build --win",
+    "make": "electron-forge make"
+  },
+  "build": {
+    "icon": "icon.png",
+    "asarUnpack": "src/output/"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^16.0.6"
+    "electron": "^16.0.6",
+    "electron-builder": "^22.14.13"
   },
   "dependencies": {
     "ffmpeg-static": "^4.4.1",

@@ -1,10 +1,13 @@
+const {app} = require('electron')
 const cp = require('child_process')
 const path = require('path')
 
-const ffmpeg = path.join(__dirname, '../', 'node_modules', 'ffmpeg-static')
+const appPath = app.getAppPath()
+const ffmpeg = path.join(appPath, 'node_modules', 'ffmpeg-static').replace('app.asar', 'app.asar.unpacked')
 
 const regLoad = RegExp('(\\w*time*\\w)+(=)+[0-9]+(:)+[0-9]+(:)+[0-9]+', 'g')
 const regDuration = RegExp('(\\w*Duration*\\w)+(: )+[0-9]+(:)+[0-9]+(:)+[0-9]+', 'g')
+
 
 let duration = 0
 
@@ -12,9 +15,10 @@ function calcTime(str) {
     const load = regLoad.exec(str)
     if (load) {
         const fullLoad = load[0].slice(5)
-        const hours = fullLoad.slice(0, 2)
-        const minutes = fullLoad.slice(3, 5)
-        const convertedTime = (hours * 60) + (minutes)
+        const hours = parseInt(fullLoad.slice(0, 2))
+        const minutes = parseInt(fullLoad.slice(3, 5))
+        const seconds = parseInt(fullLoad.slice(6, 8))
+        const convertedTime = (((hours * 60) + (minutes)) * 60) + seconds
         return convertedTime
     }
     return 0
@@ -24,9 +28,10 @@ function calcDuration(str) {
     const duration = regDuration.exec(str)
     if (duration) {
         const fullDuration = duration[0].slice(10)
-        const hours = fullDuration.slice(0, 2)
-        const minutes = fullDuration.slice(3, 5)
-        const convertedTime = (hours * 60) + (minutes)
+        const hours = parseInt(fullDuration.slice(0, 2))
+        const minutes = parseInt(fullDuration.slice(3, 5))
+        const seconds = parseInt(fullDuration.slice(6, 8))
+        const convertedTime = (((hours * 60) + (minutes)) * 60) + seconds
         return convertedTime
     }
     return 0

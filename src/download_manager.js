@@ -1,12 +1,16 @@
+const {app} = require('electron')
 const cp = require('child_process')
 const fs = require('fs')
 const path = require('path')
 const ytdl = require('ytdl-core')
 
-const video = path.join(__dirname, 'output', 'video.mp4')
-const audio = path.join(__dirname, 'output', 'audio.mp3')
-const output = path.join(__dirname, 'output', 'output.mp4')
-const ffmpeg = path.join(__dirname, '../', 'node_modules', 'ffmpeg-static')
+const appPath = app.getAppPath()
+
+const video = path.join(appPath, 'src', 'output', 'video.mp4').replace('app.asar', 'app.asar.unpacked')
+const audio = path.join(appPath, 'src', 'output', 'audio.mp3').replace('app.asar', 'app.asar.unpacked')
+const output = path.join(appPath, 'src', 'output', 'output.mp4').replace('app.asar', 'app.asar.unpacked')
+const ffmpeg = path.join(appPath, 'node_modules', 'ffmpeg-static').replace('app.asar', 'app.asar.unpacked')
+
 
 module.exports = {
     async dlVideo(url, itag, progressCb, callback) {
