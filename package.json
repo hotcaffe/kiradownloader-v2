@@ -9,7 +9,7 @@
     "start": "electron .",
     "dev": "nodemon --watch . --exec npm start",
     "build": "electron-builder build --win",
-    "make": "electron-forge make"
+    "publish": "electron-builder --win -p always"
   },
   "build": {
     "icon": "icon.png",
@@ -22,6 +22,7 @@
     "electron-builder": "^22.14.13"
   },
   "dependencies": {
+    "electron-updater": "^4.6.5",
     "ffmpeg-static": "^4.4.1",
     "ytdl-core": "^4.10.1"
   }

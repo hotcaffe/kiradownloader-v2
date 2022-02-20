@@ -49,6 +49,12 @@ contextBridge.exposeInMainWorld('api', {
         },
         waitFilePath(event, callback){
             ipcRenderer.on('file-path', callback)
+        },
+        waitUpdate(event, callback){
+            ipcRenderer.on('update', callback)
+        },
+        finishUpdating(event, callback){
+            ipcRenderer.on('finish-updating', callback)
         }
     }
 })
