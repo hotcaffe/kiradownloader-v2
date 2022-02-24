@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain} = require('electron')
+const {app, BrowserWindow, session} = require('electron')
 const {autoUpdater} = require('electron-updater')
 const path = require('path')
 const {windowIPC} = require('./IPC_listeners/frame_main')
@@ -94,7 +94,11 @@ function createWindow(){
 
 app.disableHardwareAcceleration()
 
-
 app.whenReady().then(() => {
-    app.isPackaged ? createUpdateWindow() : createWindow()
+    if(!app.isPackaged){
+        session.defaultSession.clearStorageData()
+        createWindow()
+    }else{
+        createUpdateWindow() 
+    }
 })
