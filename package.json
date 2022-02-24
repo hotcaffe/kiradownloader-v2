@@ -12,7 +12,7 @@
     "publish": "electron-builder --win -p always"
   },
   "build": {
-    "icon": "icon.png",
+    "icon": "icon.ico",
     "asarUnpack": "src/output/"
   },
   "author": "",

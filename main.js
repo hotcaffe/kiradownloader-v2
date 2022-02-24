@@ -10,7 +10,7 @@ function createUpdateWindow(){
         width: 250,
         height: 250,
         backgroundColor: '#888888',
-        title: 'Checking for upadtes!',
+        title: 'Checking for new updates!',
         icon: 'icon.png',
         resizable: false,
         frame: false,
@@ -35,7 +35,7 @@ function createUpdateWindow(){
         provider: 'github',
         repo: 'kiradownloader-v2',
         owner: 'hotcaffe',
-        private: true
+        private: false
     })
 
     autoUpdater.on('update-not-available', () => {
