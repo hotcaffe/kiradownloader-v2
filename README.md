@@ -52,7 +52,7 @@ you are using.
 Front-end:
 ```sh
 The front-end was pre-builded on figma, and put to live using React + Styled-components, a library that
-alows you to write CSS as a JavaScript literal string, making the devolpment a more clean and efficient proccess.
+allows you to write CSS as a JavaScript literal string, making the devolpment a more clean and efficient proccess.
 Also used the react-icons, that dispose many icons from different libraries, this project uses the 
 "Art Design Icons" and "Feather Icons".
 ```
