@@ -1,5 +1,5 @@
 # Kiradownloader-v2 
-##### Download youtube content and do simple media formatation.
+##### Download youtube content and simple media formatation.
 #
 
 ## Tech
