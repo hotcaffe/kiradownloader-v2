@@ -38,24 +38,24 @@
 ## Development
 
 Downloader module:
-```sh
-The downloader module was build using the ytdl-core library, that alows you to make http request to youtube
-to receive data and manipulate it.
-```
+
+>The downloader module was build using the ytdl-core library, that alows you to make 
+>http request to youtube to receive data and manipulate it.
+
 
 Formater module:
-```sh
-The formater module uses the ffmpeg plugin to convert media using the best codec, based on which container
-you are using.
-```
+
+>The formater module uses the ffmpeg plugin to convert media using the best codec, 
+>based on which container you are using.
+
 
 Front-end:
-```sh
-The front-end was pre-builded on figma, and put to live using React + Styled-components, a library that
-allows you to write CSS as a JavaScript literal string, making the devolpment a more clean and efficient proccess.
-Also used the react-icons, that dispose many icons from different libraries, this project uses the 
-"Art Design Icons" and "Feather Icons".
-```
+
+>The front-end was pre-builded on figma, and put to live using React + Styled-components,
+>a library that allows you to write CSS as a JavaScript literal string, making the devolpment a 
+>more clean and efficient proccess. Also used the react-icons, that dispose many icons from different 
+>libraries, this project uses the "Art Design Icons" and "Feather Icons".
+
 #
 
 #### About the project
