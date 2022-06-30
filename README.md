@@ -28,8 +28,11 @@
 ## Installation
 
 > You can download the setup on releases
+
 > Please try to download the last version available
+
 > The application will update automatically if the downloaded version is outdated!
+
 > The actual version is Windows only (x64)
 
 
