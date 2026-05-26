@@ -1,79 +1,193 @@
-# Kiradownloader-v2 
-##### Download youtube content and simple media formatation.
-#
+# Kiradownloader v2
 
-## Tech
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Electron_Software_Framework_Logo.svg/256px-Electron_Software_Framework_Logo.svg.png" width="70px"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="75px"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://avatars.githubusercontent.com/u/20658825?s=200&v=4" width="70px"/>
+</p>
 
+<h1 align="center">Kiradownloader v2</h1>
 
-#### Stack
+<p align="center">
+  Desktop application built with Electron for downloading YouTube content and converting media files.
+</p>
 
-- [ElectronJS](electronjs.org)
+<p align="center">
+  <img src="https://img.shields.io/badge/platform-Windows-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Electron-Latest-47848F?style=for-the-badge&logo=electron" />
+  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge" />
+</p>
+
+---
+
+# ✨ Features
+
+## 📥 YouTube Downloader
+
+- Download YouTube videos and audio
+- Select custom video/audio quality
+- Export as:
+  - MP4
+  - MP3
+- Fast and lightweight downloading process
+
+## 🔄 Media Converter
+
+Convert audio, video, and image files between multiple formats.
+
+### Examples
+
+- `MP4 → AMV`
+- `MKV → MP4`
+- `WAV → MP3`
+- `PNG → JPEG`
+- `WEBP → PNG`
+
+Powered by FFmpeg for high compatibility and optimized encoding.
+
+---
+
+# 🛠 Tech Stack
+
+## Core
+
+- [ElectronJS](https://www.electronjs.org)
 - [ReactJS](https://reactjs.org)
 - [Styled-components](https://styled-components.com)
 
-#### Libs
-- [Ytdl-core](https://www.npmjs.com/package/ytdl-core)
-- [Ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)
-- [React-Icons](https://react-icons.github.io/react-icons/)
+## Libraries
 
-#
+- [ytdl-core](https://www.npmjs.com/package/ytdl-core)
+- [ffmpeg-static](https://www.npmjs.com/package/ffmpeg-static)
+- [react-icons](https://react-icons.github.io/react-icons/)
 
-## Features
+---
 
-- Set the quality as you wish and download youtube content on mp3/mp4 formats
-- Convert video/audio or image to an specific format.
+# 📦 Installation
 
-#
+## Download
 
-## Installation
+You can download the latest installer from the Releases section:
 
-> You can download the setup on releases
+👉 **[Download Latest Release](../../releases)**
 
-> Please try to download the last version available
+---
 
-> The application will update automatically if the downloaded version is outdated!
+## Notes
 
-> The actual version is Windows only (x64)
+- The application updates automatically
+- Currently available only for:
+  - Windows x64
 
+---
 
-#
+# 🚀 Running Locally
 
-## Development
+## Clone the repository
 
-Downloader module:
+```bash
+git clone https://github.com/hotcaffe/kiradownloader-v2.git
+```
 
->The downloader module was build using the ytdl-core library, that alows you to make 
->http request to youtube to receive data and manipulate it.
+## Install dependencies
 
+```bash
+npm install
+```
 
-Formater module:
+## Run development mode
 
->The formater module uses the ffmpeg plugin to convert media using the best codec, 
->based on which container you are using.
+```bash
+npm run dev
+```
 
+## Build application
 
-Front-end:
+```bash
+npm run build
+```
 
->The front-end was pre-builded on figma, and put to live using React + Styled-components,
->a library that allows you to write CSS as a JavaScript literal string, making the devolpment a 
->more clean and efficient proccess. Also used the react-icons, that dispose many icons from different 
->libraries, this project uses the "Art Design Icons" and "Feather Icons".
+---
 
-#
+# 🧩 Project Structure
 
-#### About the project
+```txt
+src/
+ ├── components/
+ ├── pages/
+ ├── modules/
+ │    ├── downloader/
+ │    └── formatter/
+ ├── styles/
+ └── assets/
+```
 
-> `If you find any bug or the application isn't working, feel free to report`
+---
 
-#
+# 💻 Development Details
 
-## License
+## Downloader Module
 
-MIT
+The downloader module was built using the `ytdl-core` library, which allows HTTP requests to YouTube in order to retrieve and process media streams.
 
-#
+## Formatter Module
 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Electron_Software_Framework_Logo.svg/256px-Electron_Software_Framework_Logo.svg.png" width="50px"/>](https://www.electronjs.org) 
-[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width="55px" />](https://reactjs.org)
-[<img src="https://avatars.githubusercontent.com/u/20658825?s=200&v=4" width="50px"/>](https://styled-components.com)
+The formatter module uses `FFmpeg` to convert audio, video, and image files using the best codec based on the selected output container.
 
+## Front-end
+
+The interface was originally designed in Figma and developed using React + Styled-components.
+
+Styled-components allows writing CSS directly inside JavaScript using tagged template literals, making the development workflow cleaner and more maintainable.
+
+The project also uses `react-icons`, mainly from:
+
+- Feather Icons
+- Ant Design Icons
+
+---
+
+# 📸 Screenshots
+
+> Add screenshots or GIFs here
+
+Example:
+
+```md
+![Home Screen](./screenshots/home.png)
+```
+
+---
+
+# 📌 Roadmap
+
+- [ ] Linux support
+- [ ] macOS support
+- [ ] Batch conversions
+- [ ] Playlist downloads
+- [ ] Subtitle downloads
+- [ ] Drag & drop support
+- [ ] Dark/light theme switch
+
+---
+
+# ⚠️ Disclaimer
+
+This project is intended for educational and personal use only.
+
+Users are responsible for respecting YouTube's Terms of Service and copyright laws in their country.
+
+---
+
+# 🤝 Contributing
+
+If you find bugs or want to improve the project, feel free to open an issue or submit a pull request.
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
