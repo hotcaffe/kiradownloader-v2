@@ -148,11 +148,11 @@ The project also uses `react-icons`, mainly from:
 
 # 📸 Screenshots
 
-<img width="799" height="600" alt="image" src="https://github.com/user-attachments/assets/d4ba8d27-d8dd-472c-9899-a2233ee384d5" />
+<img width="536" height="400" alt="image" src="https://github.com/user-attachments/assets/d4ba8d27-d8dd-472c-9899-a2233ee384d5" />
 
-<img width="799" height="601" alt="image" src="https://github.com/user-attachments/assets/29d990a8-a64d-4f5b-9914-a9a48efa1bab" />
+<img width="536" height="400" alt="image" src="https://github.com/user-attachments/assets/29d990a8-a64d-4f5b-9914-a9a48efa1bab" />
 
-<img width="797" height="598" alt="image" src="https://github.com/user-attachments/assets/2dd21eb3-4f66-46cc-8320-e569149e2e8e" />
+<img width="536" height="400" alt="image" src="https://github.com/user-attachments/assets/2dd21eb3-4f66-46cc-8320-e569149e2e8e" />
 
 ---
 
